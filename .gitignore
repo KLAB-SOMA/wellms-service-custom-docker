@@ -11,7 +11,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-*.cache
 
 docker/mysql-data
 docker/www_logs
@@ -30,7 +29,6 @@ storage/imgcache
 escolasoft/**/vendor
 .DS_Store
 
-bootstrap/cache/**/*
 /packages
 
 result.md
