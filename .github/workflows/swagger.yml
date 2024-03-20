@@ -1,0 +1,57 @@
+name: Generate Swagger Documentation and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - stage
+      
+
+jobs:
+  swagger-gh-pages:
+    runs-on: ubuntu-latest
+    container:
+      image: escolalms/php:8
+      
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Instantiate package
+        uses: actions/checkout@v2
+
+      - name: Prepare Laravel Application
+        run: |
+          cp docker/envs/.env.ci.postgres .env
+          cp docker/envs/phpunit.xml.postgres phpunit.xml
+
+      - name: Update composer
+        run: |
+          apt-get install unzip -y
+          composer self-update
+          composer update
+
+      - name: Generage openapi
+        run: php artisan l5-swagger:generate
+
+      - name: Generate Swagger UI
+        uses: Legion2/swagger-ui-action@v1
+        with:
+          output: swagger-ui
+          spec-file: "./storage/api-docs/api-docs.json"
+
+      - name: Install git
+        run: apt-get install git -y
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
