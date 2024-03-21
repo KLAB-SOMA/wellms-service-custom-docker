@@ -18,11 +18,6 @@ List of all packages is available at [packagist.org/?query=escolalms](https://pa
 
 ## Installation
 
-You should consider install with our [installation package](https://docs.wellms.io/getting-started/guide.html).
-
-To install default docker environment either clone this repo or use
-
-
 ### Postgres (default)
 
 ```bash
@@ -38,6 +33,10 @@ make init
 
 Great ! Now the API is served at api.localhost:1001 by this default config
 For more information please access api.localhost:1001/api/documentation
+
+## API Documentation
+
+https://klab-soma.github.io/wellms-service-custom-docker/
 
 ## Demo & Credentials
 
