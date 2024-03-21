@@ -7,7 +7,7 @@ services:
   caddy:
     image: caddy
     volumes:
-      - ./docker/conf/Caddyfile:/etc/caddy/Caddyfile
+      - ./docker/conf/caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./:/var/www/html
       - ./caddy/certs:/etc/caddy/certs
       - ./caddy/data:/data
