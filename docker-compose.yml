@@ -16,6 +16,7 @@ services:
       - escola_lms
     ports:
       - "1001:1001"
+      - "80:80"
   #      - "443:443"
   
   escola_lms_app:
