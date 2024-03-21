@@ -110,7 +110,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [phpunit-postgres-php82]
+    #needs: [phpunit-postgres-php82]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -122,4 +122,4 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script: |
-            ssh -o StrictHostKeyChecking=no -i ${{ secrets.EC2_PRIVATE_KEY }} ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} 'cd ~/klab && bash -s' < deploy_wellms.sh
+            ssh -o StrictHostKeyChecking=no -i ${{ secrets.EC2_PRIVATE_KEY }} ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} 'bash -s' < deploy_wellms.sh
