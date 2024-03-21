@@ -82,3 +82,6 @@ import-postgres:
 
 init: docker-up cache composer-update migrate-fresh-quick
 
+# restarts all containers
+restart:
+	- docker compose restart

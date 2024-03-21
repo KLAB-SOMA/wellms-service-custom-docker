@@ -3,9 +3,7 @@ name: Generate Swagger Documentation and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
-      - stage
-      
+      - main   
 
 jobs:
   swagger-gh-pages:
@@ -53,5 +51,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: swagger-ui
