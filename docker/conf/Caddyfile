@@ -39,5 +39,3 @@ http://storage.localhost:1001 {
 http://minio.localhost:1001 {
     reverse_proxy minio:9001
 }
-
-

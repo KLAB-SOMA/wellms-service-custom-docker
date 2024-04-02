@@ -6,7 +6,7 @@ return [
         'default' => [
             'api' => [
                 'title' => 'Wellms API + Klab',
-                'version' => '1.0.0',
+                'version' => '2.0.0',
             ],
             'routes' => [
                 /*
