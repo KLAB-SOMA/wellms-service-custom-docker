@@ -11,6 +11,11 @@ cp docker/envs/.env.postgres.prod .env
 
 _you can change the .env for one of the others provided for each type of necessity_
 
+bash
+```
+cp docker/conf/defaultcaddy/Caddyfile docker/conf/Caddyfile
+```
+
 
 sh
 ```
