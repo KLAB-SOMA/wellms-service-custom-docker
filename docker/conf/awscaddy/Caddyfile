@@ -1,41 +1,41 @@
-# This file is used for building docker image
-http://api.ec2-52-67-21-75.sa-east-1.compute.amazonaws.com:1001 {
-    # Resolve the root directory for the app
-    root * /var/www/html/public
+ec2-52-67-21-75.sa-east-1.compute.amazonaws.com:1001 {
 
-    # Provide Zstd and Gzip compression
-    encode zstd gzip
+    # API endpoints 
+    handle_path /api/* {
+        # Resolve the root directory 
+        root * /var/www/html/public
 
-    # Allow caddy to serve static files
-    file_server
+        # Compression 
+        encode zstd gzip
 
-    # Enable PHP-FPM
-    php_fastcgi escola_lms_app:9000 {
-        header_up -Access-Control-Allow-Origin
-        header_down -Access-Control-Allow-Origin
+        # Serve static files
+        file_server
+
+        # PHP-FPM integration
+        php_fastcgi escola_lms_app:9000 {
+            header_up -Access-Control-Allow-Origin
+            header_down -Access-Control-Allow-Origin
+        }
+
+        # CORS logic
+        @origin header Origin {http.request.header.Origin}
+        header @origin Access-Control-Allow-Origin {http.request.header.Origin}
+
+        @excluded { 
+            not header Origin {http.request.header.Origin}
+        }
+        header @excluded Access-Control-Allow-Origin *
+
+        header Access-Control-Allow-Credentials true
     }
 
-    # Cors logic 
-    @origin header Origin {http.request.header.Origin}
-    header @origin Access-Control-Allow-Origin {http.request.header.Origin}
-
-    #@referer header Referer {http.request.header.Referer}
-    #header @referer Access-Control-Allow-Origin {http.request.header.Referer}
-
-    @excluded { 
-        not header Origin {http.request.header.Origin}
-        #not header Referer {http.request.header.Referer}
+    # Storage proxy 
+    handle_path /storage/* {
+        reverse_proxy minio:9000
     }
-    header @excluded Access-Control-Allow-Origin *
 
-    header Access-Control-Allow-Credentials true
-
-}
-
-http://storage.ec2-52-67-21-75.sa-east-1.compute.amazonaws.com:1001 {
-    reverse_proxy minio:9000
-}
-
-http://minio.ec2-52-67-21-75.sa-east-1.compute.amazonaws.com:1001 {
-    reverse_proxy minio:9001
+    # Minio admin UI proxy
+    handle_path /minio/* {
+        reverse_proxy minio:9001
+    }
 }
