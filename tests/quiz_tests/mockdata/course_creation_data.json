@@ -1,0 +1,16 @@
+{ 
+    "title": "Klab test course",
+    "subtitle": "A new course ready to be tested",
+    "summary": "Course created by the automated integration test to validade the course creation and other features",
+    "description": "Freash new course created by the automated integration test to validade the course creation and other features of the API",
+    "findable": true,
+    "public": true,
+    "active_from": "2021-08-23T14:00:00",
+    "active_to": "2024-09-25T14:00:00",
+    "status": "published",
+    "target_group": "klab devs",
+    "level": "beginner",
+    "language": "pt",
+    "duration": "1 hour",
+    "hours_to_complete": 1
+}

@@ -1,0 +1,8 @@
+{
+    "topic_gift_quiz_id": 1,
+    "value": "Which answer equals 5\\? {~2 + 2 =2 + 3 ~2 + 4}",
+    "type": "EscolaLms\\TopicTypeGift\\Enum\\QuestionTypeEnum\\MULTIPLE_CHOICE",
+    "order": 0,
+    "score": 1,
+    "category_id": 1
+}

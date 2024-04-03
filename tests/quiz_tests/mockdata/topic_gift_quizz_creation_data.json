@@ -1,0 +1,12 @@
+{
+    "lesson_id": 663,
+    "order": 0,
+    "title": "Quiz 101",
+    "summary": "Let's create a quiz",
+    "topicable_type": "EscolaLms\\TopicTypeGift\\Models\\GiftQuiz",
+    "value": "Which answer equals 5\\? {~2 + 2 =2 + 3 ~2 + 4}",
+    "type": "EscolaLms\\TopicTypeGift\\Enum\\QuestionTypeEnum\\MULTIPLE_CHOICE",
+    "max_attempts": 3,
+    "min_pass_score": 1,
+    "max_execution_time": 120
+}

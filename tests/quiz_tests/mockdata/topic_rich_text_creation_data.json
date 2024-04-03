@@ -1,0 +1,8 @@
+{
+    "lesson_id": 663,
+    "order": 0,
+    "title": "How to create a rich text topic",
+    "summary": "Let's create a rich text topic",
+    "topicable_type": "EscolaLms\\TopicTypes\\Models\\TopicContent\\RichText",
+    "value": "<h1>How to create a rich text topic</h1> <p>Let's create a rich text topic</p>"
+}
